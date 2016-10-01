@@ -14,7 +14,7 @@
             });
         } else if (scrollTop <= y_pos) {
             $navbar.removeClass("navbar-fixed").clearQueue().animate({
-                top: "-48px"
+                top: "0px"
             }, 0);
         }
     });

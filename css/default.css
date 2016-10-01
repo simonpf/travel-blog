@@ -32,17 +32,22 @@ div#logo a {
     font-family: 'Open Sans Condensed', sans-serif;
 }
 
-div#header #navigation {
+div #navigation {
     font-family: 'Open Sans Condensed', sans-serif;
+    background: #ffffff;
 }
 
-div#header{
+div #header{
     color: #bbb;
-    background: #2e2e2e;
+    background: #ffffff;
+    height: 3em;
 }
 
 .navbar-fixed {
   position: fixed;
+  text-align: center;
+  height: 3 em;
+  width: 100%;
   top: -3em;
 }
 
