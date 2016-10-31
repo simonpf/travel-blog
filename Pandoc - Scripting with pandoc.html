@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <title>Pandoc - Scripting with pandoc</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+       <![endif]-->
+  <link href="Pandoc%20-%20Scripting%20with%20pandoc_files/css.css" rel="stylesheet">
+  <link rel="stylesheet" href="Pandoc%20-%20Scripting%20with%20pandoc_files/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="Pandoc%20-%20Scripting%20with%20pandoc_files/screen.css">
+  <link rel="stylesheet" type="text/css" media="print" href="Pandoc%20-%20Scripting%20with%20pandoc_files/print.css">
+  <script src="Pandoc%20-%20Scripting%20with%20pandoc_files/load.js" async="" type="text/javascript"></script><script src="Pandoc%20-%20Scripting%20with%20pandoc_files/ga.js" async="" type="text/javascript"></script><script src="Pandoc%20-%20Scripting%20with%20pandoc_files/jquery.js" type="text/javascript"></script>
+  <script src="Pandoc%20-%20Scripting%20with%20pandoc_files/bootstrap.js"></script>
+  <script src="Pandoc%20-%20Scripting%20with%20pandoc_files/nav.js"></script>
+  <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2234613-4']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <script type="text/javascript">
+  /* <![CDATA[ */
+    (function() {
+        var s = document.createElement('script'), t = document.getElementsByTagName('script')[0];
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'http://api.flattr.com/js/0.6/load.js?mode=auto';
+        t.parentNode.insertBefore(s, t);
+    })();
+  /* ]]> */
+  </script>
+</head>
+<body>
+  <div id="doc" class="container-fluid">
+    <header>
+      <div id="flattr">
+        <iframe allowtransparency="true" marginwidth="0" marginheight="0" border="0" title="Flattr" scrolling="no" class="FlattrButton" src="Pandoc%20-%20Scripting%20with%20pandoc_files/a.html" frameborder="0" height="20" width="110"></iframe>
+        <noscript><a href="http://flattr.com/thing/936364/Pandoc" target="_blank"><img src="http://api.flattr.com/button/flattr-badge-large.png" alt="Flattr this" title="Flattr this" border="0" /></a></noscript>
+      </div>
+        <div id="paypal">
+         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input name="cmd" value="_s-xclick" type="hidden">
+<input name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----
+" type="hidden">
+<input src="Pandoc%20-%20Scripting%20with%20pandoc_files/btn_donate_SM.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" border="0" type="image">
+<img alt="" src="Pandoc%20-%20Scripting%20with%20pandoc_files/pixel.gif" border="0" height="1" width="1">
+</form>
+      </div>
+
+        <span class="big">Pandoc</span>
+        &nbsp;
+        <span class="small">a universal document converter</span>
+    </header>
+    <div id="bd">
+      <nav id="navbar" class="navbar nav navbar-default col-md-3 col-sm-4">
+        <div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+</div>
+<div class="navbar-collapse collapse">
+  <ul class="nav tree">
+    <li><a href="http://pandoc.org/index.html">About</a></li>
+    <li><a href="http://pandoc.org/installing.html">Installing</a></li>
+    <li><a href="http://pandoc.org/getting-started.html">Getting started</a></li>
+    <li><a class="tree-toggle nav-header">Demos</a>
+    <ul style="display: none;" class="nav tree">
+      <li><a href="http://pandoc.org/try">Try pandoc online</a></li>
+      <li><a href="http://pandoc.org/demos.html">Examples</a></li>
+    </ul>
+    </li>
+    <li><a class="tree-toggle nav-header">Documentation</a>
+    <ul style="display: none;" class="nav tree">
+      <li><a class="tree-toggle nav-header">User's Guide</a>
+        <ul style="display: none;" class="nav tree">
+          <li><a href="http://pandoc.org/MANUAL.html">HTML</a></li>
+          <li><a href="http://pandoc.org/MANUAL.pdf">PDF</a></li>
+        </ul>
+      </li><li><a href="http://pandoc.org/faqs.html">FAQ</a></li>
+      <li><a href="http://pandoc.org/press.html">Press</a></li>
+      <li><a href="http://hackage.haskell.org/package/pandoc">API documentation</a></li>
+      <li><a href="http://pandoc.org/CONTRIBUTING.html">Contributing</a></li>
+      <li><a href="http://pandoc.org/scripting.html">Scripting</a></li>
+      <li><a href="http://pandoc.org/epub.html">Making an ebook</a></li>
+    </ul>
+    </li>
+    <li><a href="http://pandoc.org/help.html">Help</a></li>
+    <li><a href="https://github.com/jgm/pandoc/wiki/Pandoc-Extras">Extras</a></li>
+    <li><a href="http://pandoc.org/releases.html">Releases</a></li>
+  </ul>
+</div>
+        <div id="toc">
+<ul>
+<li><a href="#a-simple-example">A simple example</a></li>
+<li><a href="#queries-listing-urls">Queries: listing URLs</a></li>
+<li><a href="#json-filters">JSON filters</a></li>
+<li><a href="#latex-for-wordpress">LaTeX for WordPress</a></li>
+<li><a href="#but-i-dont-want-to-learn-haskell">But I don’t want to learn Haskell!</a></li>
+<li><a href="#include-files">Include files</a></li>
+<li><a href="#removing-links">Removing links</a></li>
+<li><a href="#a-filter-for-ruby-text">A filter for ruby text</a></li>
+<li><a href="#exercises">Exercises</a></li>
+</ul>
+        </div>
+      </nav>
+      <main class="col-md-9 col-sm-8">
+        <div class="row">
+          <h1 class="title">Scripting with pandoc</h1>
+<p><em>This tutorial is for pandoc 1.16 or higher. If you are using an earlier version of pandoc, see <a href="http://pandoc.org/scripting-1.12.html">the older version of the tutorial</a>.</em></p>
+<h2 id="a-simple-example">A simple example</h2>
+<p>Suppose you wanted to replace all level 2+ headers in a markdown 
+document with regular paragraphs, with text in italics. How would you go
+ about doing this?</p>
+<p>A first thought would be to use regular expressions. Something like this:</p>
+<pre><code>perl -pe 's/^##+ (.*)$/\*\1\*/' source.txt</code></pre>
+<p>This should work most of the time. But don’t forget that ATX style headers can end with a sequence of <code>#</code>s that is not part of the header text:</p>
+<pre><code>## My header ##</code></pre>
+<p>And what if your document contains a line starting with <code>##</code> in an HTML comment or delimited code block?</p>
+<pre><code>&lt;!--
+## This is just a comment
+--&gt;
+
+~~~~
+### A third level header in standard markdown
+~~~~</code></pre>
+<p>We don’t want to touch <em>these</em> lines. Moreover, what about setext style second-level headers?</p>
+<pre><code>A header
+--------</code></pre>
+<p>We need to handle those too. Finally, can we be sure that adding 
+asterisks to each side of our string will put it in italics? What if the
+ string already contains asterisks around it? Then we’ll end up with 
+bold text, which is not what we want. And what if it contains a regular 
+unescaped asterisk?</p>
+<p>How would you modify your regular expression to handle these cases? 
+It would be hairy, to say the least. What we need is a real parser.</p>
+<p>Well, pandoc has a real markdown parser, the library function <code>readMarkdown</code>.
+ This transforms markdown text to an abstract syntax tree (AST) that 
+represents the document structure. Why not manipulate the AST directly 
+in a short Haskell script, then convert the result back to markdown 
+using <code>writeMarkdown</code>?</p>
+<p>First, let’s see what this AST looks like. We can use pandoc’s <code>native</code> output format:</p>
+<pre><code>% cat test.txt
+### my header
+
+text with *italics*
+% pandoc -t native test.txt
+Pandoc (Meta {unMeta = fromList []})
+[Header 3 ("my-header",[],[]) [Str "My",Space,Str "header"]
+, Para [Str "text",Space,Str "with",Space,Emph [Str "italics"]] ]</code></pre>
+<p>A <code>Pandoc</code> document consists of a <code>Meta</code> block (containing metadata like title, authors, and date) and a list of <code>Block</code> elements. In this case, we have two <code>Block</code>s, a <code>Header</code> and a <code>Para</code>. Each has as its content a list of <code>Inline</code> elements. For more details on the pandoc AST, see the <a href="http://hackage.haskell.org/package/pandoc-types">haddock documentation for <code>Text.Pandoc.Definition</code></a>.</p>
+<p>Here’s a short Haskell script that reads markdown, changes level 2+ 
+headers to regular paragraphs, and writes the result as markdown. If you
+ save it as <code>behead.hs</code>, you can run it using <code>runhaskell behead.hs</code>. It will act like a unix pipe, reading from <code>stdin</code> and writing to <code>stdout</code>. Or, if you want, you can compile it, using <code>ghc --make behead</code>, then run the resulting executable <code>behead</code>.</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- behead.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.Walk</span> (walk)
+
+<span class="ot">behead ::</span> <span class="dt">Block</span> <span class="ot">-&gt;</span> <span class="dt">Block</span>
+behead (<span class="dt">Header</span> n _ xs) <span class="fu">|</span> n <span class="fu">&gt;=</span> <span class="dv">2</span> <span class="fu">=</span> <span class="dt">Para</span> [<span class="dt">Emph</span> xs]
+behead x <span class="fu">=</span> x
+
+<span class="ot">readDoc ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Pandoc</span>
+readDoc s <span class="fu">=</span> readMarkdown def s
+<span class="co">-- or, for pandoc 1.14 and greater, use:</span>
+<span class="co">-- readDoc s = case readMarkdown def s of</span>
+<span class="co">--                  Right doc -&gt; doc</span>
+<span class="co">--                  Left err  -&gt; error (show err)</span>
+
+<span class="ot">writeDoc ::</span> <span class="dt">Pandoc</span> <span class="ot">-&gt;</span> <span class="dt">String</span>
+writeDoc doc <span class="fu">=</span> writeMarkdown def doc
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> interact (writeDoc <span class="fu">.</span> walk behead <span class="fu">.</span> readDoc)</code></pre></div>
+<p>The magic here is the <code>walk</code> function, which converts our <code>behead</code> function (a function from <code>Block</code> to <code>Block</code>) to a transformation on whole <code>Pandoc</code> documents. (See the <a href="http://hackage.haskell.org/package/pandoc-types">haddock documentation for <code>Text.Pandoc.Walk</code></a>.)</p>
+<h2 id="queries-listing-urls">Queries: listing URLs</h2>
+<p>We can use this same technique to do much more complex 
+transformations and queries. Here’s how we could extract all the URLs 
+linked to in a markdown document (again, not an easy task with regular 
+expressions):</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- extracturls.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc</span>
+
+<span class="ot">extractURL ::</span> <span class="dt">Inline</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]
+extractURL (<span class="dt">Link</span> _ _ (u,_)) <span class="fu">=</span> [u]
+extractURL (<span class="dt">Image</span> _ _ (u,_)) <span class="fu">=</span> [u]
+extractURL _ <span class="fu">=</span> []
+
+<span class="ot">extractURLs ::</span> <span class="dt">Pandoc</span> <span class="ot">-&gt;</span> [<span class="dt">String</span>]
+extractURLs <span class="fu">=</span> query extractURL
+
+<span class="ot">readDoc ::</span> <span class="dt">String</span> <span class="ot">-&gt;</span> <span class="dt">Pandoc</span>
+readDoc <span class="fu">=</span> readMarkdown def
+<span class="co">-- or, for pandoc 1.14, use:</span>
+<span class="co">-- readDoc s = case readMarkdown def s of</span>
+<span class="co">--                Right doc -&gt; doc</span>
+<span class="co">--                Left err  -&gt; error (show err)</span>
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> interact (unlines <span class="fu">.</span> extractURLs <span class="fu">.</span> readDoc)</code></pre></div>
+<p><code>query</code> is the query counterpart of <code>walk</code>: it lifts a function that operates on <code>Inline</code> elements to one that operates on the whole <code>Pandoc</code> AST. The results returned by applying <code>extractURL</code> to each <code>Inline</code> element are concatenated in the result.</p>
+<h2 id="json-filters">JSON filters</h2>
+<p><code>behead.hs</code> is a very special-purpose program. It reads a 
+specific input format (markdown) and writes a specific output format 
+(HTML), with a specific set of options (here, the defaults). But the 
+basic operation it performs is one that would be useful in many document
+ transformations. It would be nice to isolate the part of the program 
+that transforms the pandoc AST, leaving the rest to pandoc itself. What 
+we want is a <em>filter</em> that <em>just</em> operates on the AST—or rather, on a JSON representation of the AST that pandoc can produce and consume:</p>
+<pre><code>                         source format
+                              ↓
+                           (pandoc)
+                              ↓
+                      JSON-formatted AST
+                              ↓
+                           (filter)
+                              ↓
+                      JSON-formatted AST
+                              ↓
+                           (pandoc)
+                              ↓
+                        target format</code></pre>
+<p>The module <code>Text.Pandoc.JSON</code> contains a function <code>toJSONFilter</code> that makes it easy to write such filters. Here is a filter version of <code>behead.hs</code>:</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">#!/usr/bin/env runhaskell</span>
+<span class="co">-- behead2.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.JSON</span>
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> toJSONFilter behead
+  <span class="kw">where</span> behead (<span class="dt">Header</span> n _ xs) <span class="fu">|</span> n <span class="fu">&gt;=</span> <span class="dv">2</span> <span class="fu">=</span> <span class="dt">Para</span> [<span class="dt">Emph</span> xs]
+        behead x <span class="fu">=</span> x</code></pre></div>
+<p>It can be used this way:</p>
+<pre><code>pandoc -f SOURCEFORMAT -t json | runhaskell behead2.hs | \
+  pandoc -f json -t TARGETFORMAT</code></pre>
+<p>But it is easier to use the <code>--filter</code> option with pandoc:</p>
+<pre><code>pandoc -f SOURCEFORMAT -t TARGETFORMAT --filter ./behead2.hs</code></pre>
+<p>Note that this approach requires that <code>behead2.hs</code> be executable, so we must</p>
+<pre><code>chmod +x behead2.hs</code></pre>
+<p>Alternatively, we could compile the filter:</p>
+<pre><code>ghc --make behead2.hs
+pandoc -f SOURCEFORMAT -t TARGETFORMAT --filter ./behead</code></pre>
+<p>Note that if the filter is placed in the system PATH, then the initial <code>./</code> is not needed. Note also that the command line can include multiple instances of <code>--filter</code>: the filters will be applied in sequence.</p>
+<h2 id="latex-for-wordpress">LaTeX for WordPress</h2>
+<p>Another easy example. WordPress blogs require a special format for LaTeX math. Instead of <code>$e=mc^2$</code>, you need: <code>$LaTeX e=mc^2$</code>. How can we convert a markdown document accordingly?</p>
+<p>Again, it’s difficult to do the job reliably with regexes. A <code>$</code>
+ might be a regular currency indicator, or it might occur in a comment 
+or code block or inline code span. We just want to find the <code>$</code>s that begin LaTeX math. If only we had a parser…</p>
+<p>We do. Pandoc already extracts LaTeX math, so:</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">#!/usr/bin/env runhaskell</span>
+<span class="co">-- wordpressify.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.JSON</span>
+
+main <span class="fu">=</span> toJSONFilter wordpressify
+  <span class="kw">where</span> wordpressify (<span class="dt">Math</span> x y) <span class="fu">=</span> <span class="dt">Math</span> x (<span class="st">"LaTeX "</span> <span class="fu">++</span> y)
+        wordpressify x <span class="fu">=</span> x</code></pre></div>
+<p>Mission accomplished. (I’ve omitted type signatures here, just to show it can be done.)</p>
+<h2 id="but-i-dont-want-to-learn-haskell">But I don’t want to learn Haskell!</h2>
+<p>While it’s easiest to write pandoc filters in Haskell, it is fairly easy to write them in python using the <code>pandocfilters</code> package.<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> The package is in PyPI and can be installed using <code>pip install pandocfilters</code> or <code>easy_install pandocfilters</code>.</p>
+<p>Here’s our “beheading” filter in python:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">#!/usr/bin/env python</span>
+
+<span class="co">"""</span>
+<span class="co">Pandoc filter to convert all level 2+ headers to paragraphs with</span>
+<span class="co">emphasized text.</span>
+<span class="co">"""</span>
+
+<span class="im">from</span> pandocfilters <span class="im">import</span> toJSONFilter, Emph, Para
+
+<span class="kw">def</span> behead(key, value, <span class="bu">format</span>, meta):
+  <span class="cf">if</span> key <span class="op">==</span> <span class="st">'Header'</span> <span class="op">and</span> value[<span class="dv">0</span>] <span class="op">&gt;=</span> <span class="dv">2</span>:
+    <span class="cf">return</span> Para([Emph(value[<span class="dv">2</span>])])
+
+<span class="cf">if</span> <span class="va">__name__</span> <span class="op">==</span> <span class="st">"__main__"</span>:
+  toJSONFilter(behead)</code></pre></div>
+<p><code>toJSONFilter(behead)</code> walks the AST and applies the <code>behead</code> action to each element. If <code>behead</code>
+ returns nothing, the node is unchanged; if it returns an object, the 
+node is replaced; if it returns a list, the new list is spliced in.</p>
+<p>Note that, although these parameters are not used in this example, <code>format</code> provides access to the target format, and <code>meta</code> provides access to the document’s metadata.</p>
+<p>There are many examples of python filters in <a href="http://github.com/jgm/pandocfilters">the pandocfilters repository</a>.</p>
+<h2 id="include-files">Include files</h2>
+<p>So none of our transforms have involved IO. How about a script that 
+reads a markdown document, finds all the inline code blocks with 
+attribute <code>include</code>, and replaces their contents with the contents of the file given?</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">#!/usr/bin/env runhaskell</span>
+<span class="co">-- includes.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.JSON</span>
+
+<span class="ot">doInclude ::</span> <span class="dt">Block</span> <span class="ot">-&gt;</span> <span class="dt">IO</span> <span class="dt">Block</span>
+doInclude cb<span class="fu">@</span>(<span class="dt">CodeBlock</span> (id, classes, namevals) contents) <span class="fu">=</span>
+  <span class="kw">case</span> lookup <span class="st">"include"</span> namevals <span class="kw">of</span>
+       <span class="dt">Just</span> f     <span class="ot">-&gt;</span> return <span class="fu">.</span> (<span class="dt">CodeBlock</span> (id, classes, namevals)) <span class="fu">=&lt;&lt;</span> readFile f
+       <span class="dt">Nothing</span>    <span class="ot">-&gt;</span> return cb
+doInclude x <span class="fu">=</span> return x
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> toJSONFilter doInclude</code></pre></div>
+<p>Try this on the following:</p>
+<pre><code>Here's the pandoc README:
+
+~~~~ {include="README"}
+this will be replaced by contents of README
+~~~~</code></pre>
+<h2 id="removing-links">Removing links</h2>
+<p>What if we want to remove every link from a document, retaining the link’s text?</p>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="st">#!/usr/bin/env runhaskell</span>
+<span class="co">-- delink.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.JSON</span>
+
+main <span class="fu">=</span> toJSONFilter delink
+
+<span class="ot">delink ::</span> <span class="dt">Inline</span> <span class="ot">-&gt;</span> [<span class="dt">Inline</span>]
+delink (<span class="dt">Link</span> _ txt _) <span class="fu">=</span> txt
+delink x              <span class="fu">=</span> [x]</code></pre></div>
+<p>Note that <code>delink</code> can’t be a function of type <code>Inline -&gt; Inline</code>, because the thing we want to replace the link with is not a single <code>Inline</code> element, but a list of them. So we make <code>delink</code> a function from an <code>Inline</code> element to a list of <code>Inline</code> elements. <code>toJSONFilter</code> can still lift this function to a transformation of type <code>Pandoc -&gt; Pandoc</code>.</p>
+<h2 id="a-filter-for-ruby-text">A filter for ruby text</h2>
+<p>Finally, here’s a nice real-world example, developed on the <a href="http://groups.google.com/group/pandoc-discuss/browse_thread/thread/7baea325565878c8">pandoc-discuss</a> list. Qubyte wrote:</p>
+<blockquote>
+<p>I’m interested in using pandoc to turn my markdown notes on Japanese 
+into nicely set HTML and (Xe)LaTeX. With HTML5, ruby (typically used to 
+phonetically read chinese characters by placing text above or to the 
+side) is standard, and support from browsers is emerging (Webkit based 
+browsers appear to fully support it). For those browsers that don’t 
+support it yet (notably Firefox) the feature falls back in a nice way by
+ placing the phonetic reading inside brackets to the side of each 
+Chinese character, which is suitable for other output formats too. As 
+for (Xe)LaTeX, ruby is not an issue.</p>
+<p>At the moment, I use inline HTML to achieve the result when the 
+conversion is to HTML, but it’s ugly and uses a lot of keystrokes, for 
+example</p>
+<div class="sourceCode"><pre class="sourceCode xml"><code class="sourceCode xml"><span class="kw">&lt;ruby&gt;</span>ご<span class="kw">&lt;rt&gt;&lt;/rt&gt;</span>飯<span class="kw">&lt;rp&gt;</span>（<span class="kw">&lt;/rp&gt;&lt;rt&gt;</span>はん<span class="kw">&lt;/rt&gt;&lt;rp&gt;</span>）<span class="kw">&lt;/rp&gt;&lt;/ruby&gt;</span></code></pre></div>
+<p>sets ご飯 “gohan” with “han” spelt phonetically above the second 
+character, or to the right of it in brackets if the browser does not 
+support ruby. I’d like to have something more like</p>
+<pre><code>r[はん](飯)</code></pre>
+<p>or any keystroke saving convention would be welcome.</p>
+</blockquote>
+<p>We came up with the following script, which uses the convention that a
+ markdown link with a URL beginning with a hyphen is interpreted as 
+ruby:</p>
+<pre><code>[はん](-飯)</code></pre>
+<div class="sourceCode"><pre class="sourceCode haskell"><code class="sourceCode haskell"><span class="co">-- handleruby.hs</span>
+<span class="kw">import </span><span class="dt">Text.Pandoc.JSON</span>
+<span class="kw">import </span><span class="dt">System.Environment</span> (getArgs)
+
+<span class="ot">handleRuby ::</span> <span class="dt">Maybe</span> <span class="dt">Format</span> <span class="ot">-&gt;</span> <span class="dt">Inline</span> <span class="ot">-&gt;</span> <span class="dt">Inline</span>
+handleRuby (<span class="dt">Just</span> format) (<span class="dt">Link</span> _ [<span class="dt">Str</span> ruby] (<span class="ch">'-'</span><span class="fu">:</span>kanji,_))
+  <span class="fu">|</span> format <span class="fu">==</span> <span class="dt">Format</span> <span class="st">"html"</span>  <span class="fu">=</span> <span class="dt">RawInline</span> format
+    <span class="fu">$</span> <span class="st">"&lt;ruby&gt;"</span> <span class="fu">++</span> kanji <span class="fu">++</span> <span class="st">"&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;"</span> <span class="fu">++</span> ruby <span class="fu">++</span> <span class="st">"&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;"</span>
+  <span class="fu">|</span> format <span class="fu">==</span> <span class="dt">Format</span> <span class="st">"latex"</span> <span class="fu">=</span> <span class="dt">RawInline</span> format
+    <span class="fu">$</span> <span class="st">"\\ruby{"</span> <span class="fu">++</span> kanji <span class="fu">++</span> <span class="st">"}{"</span> <span class="fu">++</span> ruby <span class="fu">++</span> <span class="st">"}"</span>
+  <span class="fu">|</span> otherwise <span class="fu">=</span> <span class="dt">Str</span> ruby
+handleRuby _ x <span class="fu">=</span> x
+
+<span class="ot">main ::</span> <span class="dt">IO</span> ()
+main <span class="fu">=</span> toJSONFilter handleRuby</code></pre></div>
+<p>Note that, when a script is called using <code>--filter</code>, pandoc passes it the target format as the first argument. When a function’s first argument is of type <code>Maybe Format</code>, <code>toJSONFilter</code> will automatically assign it <code>Just</code> the target format or <code>Nothing</code>.</p>
+<p>We compile our script:</p>
+<pre><code>ghc --make handleRuby</code></pre>
+<p>Then run it:</p>
+<pre><code>% pandoc -F ./handleRuby -t html
+[はん](-飯)
+^D
+&lt;p&gt;&lt;ruby&gt;飯&lt;rp&gt;(&lt;/rp&gt;&lt;rt&gt;はん&lt;/rt&gt;&lt;rp&gt;)&lt;/rp&gt;&lt;/ruby&gt;&lt;/p&gt;
+% pandoc -F ./handleRuby -t latex
+[はん](-飯)
+^D
+\ruby{飯}{はん}</code></pre>
+<h2 id="exercises">Exercises</h2>
+<ol type="1">
+<li><p>Put all the regular text in a markdown document in ALL CAPS (without touching text in URLs or link titles).</p></li>
+<li><p>Remove all horizontal rules from a document.</p></li>
+<li><p>Renumber all enumerated lists with roman numerals.</p></li>
+<li><p>Replace each delimited code block with class <code>dot</code> with an image generated by running <code>dot -Tpng</code> (from graphviz) on the contents of the code block.</p></li>
+<li><p>Find all code blocks with class <code>python</code> and run them using the python interpreter, printing the results to the console.</p></li>
+</ol>
+<section class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Don’t like python either? There are also ports in <a href="https://github.com/vinai/pandocfilters-php">PHP</a>, <a href="https://metacpan.org/pod/Pandoc::Filter">perl</a>, and <a href="https://github.com/mvhenderson/pandoc-filter-node">javascript/node.js</a>.<a href="#fnref1">↩</a></p></li>
+</ol>
+</section>
+        </div>
+      </main>
+    </div>
+    <footer>
+    </footer>
+  </div>
+
+
+</body></html>

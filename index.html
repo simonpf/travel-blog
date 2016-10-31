@@ -1,3 +1,237 @@
-$for(posts)$
-$body$
-$endfor$
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Ao Fim do Mundo</title>
+        <!-- Fonts -->
+          <link href="https://fonts.googleapis.com/css?family=Amatica+SC|Open+Sans:300,300i" rel="stylesheet">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="../css/default.css" />
+        <link rel="stylesheet" href="../css/leaflet.css" />
+	<link rel="stylesheet" href="../css/Leaflet.Photo.css" />
+        <!-- Javascript -->
+        <script src="../js/jquery.min.js"></script>
+        <!-- Offline: <script src="/leaflet/leaflet.js"></script>-->
+        <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+        <!--<script src="js/leaflet.js"></script>-->
+        <script src="../js/MarkerClusterGroup.js"></script>
+        <script src="../js/MarkerCluster.js"></script>
+        <script src="../js/MarkerCluster.Spiderfier.js"></script>
+        <script src="../js/DistanceGrid.js"></script>
+        <script src="../js/MarkerOpacity.js"></script>
+        <script src="../js/Leaflet.Photo.js"></script>
+        <script src="../images.js"></script>
+    </head>
+        <div id="mapid"></div>
+        <script src="../js/map.js"></script>
+
+        <div id="header">
+          <!--
+            <div id="logo">
+                <a href="/">Takkatukka</a>
+            </div>
+            -->
+            <div id="navigation">
+            <div id="compass_container">
+              <div id="top_left">
+                <a href="../">Home</a>
+                <a href="../about.html">About</a>
+              </div>
+              <div id="top_right">
+                <a href="../contact.html">Contact</a>
+                <a href="../archive.html">Archive</a>
+              </div>
+              <div id="bottom_left">
+              </div>
+              <div id="bottom_right">
+              </div>
+              <div id="compass"></div>
+            </div>
+            </div>
+        </div>
+
+    <body>
+        <div id="content">
+            <h1><span id="h_en">Week 1 /</span><span id="h_de"> Woche 1</span></h1>
+
+            <div class="info">
+    Posted on October 26, 2016
+    
+</div>
+
+<div id="float">
+<div id="de">
+<p>In der ersten Woche unserer Tour haben wir es von <em>Santos</em> nach <em>Cerro Azul</em>, welches in der Grenzregion der brasilianischen Bundesstaaten <em>Sao Paolo</em> und <em>Parana</em> liegt, geschafft. Nach zwei Tagen in der relativ flach gelegenen und dicht besiedelten Kuestenregion bei <em>Santos</em> haben wir uns auf den Weg in die Berge noerdlich von <em>Curitiba</em>, der Hauptstadt von <em>Parana</em>, gemacht. Insgesamt sind wir <span class="math inline">515 <em>k</em><em>m</em></span> gefahren und haben <span class="math inline">6200 </span> Hoehenmeter bewaeltigt.</p>
+</div>
+<div id="en">
+<p>The first week of our trip took us from <em>Santos</em> to <em>Cerro Azul</em> in the border region of the states of <em>Sao Paulo</em> and <em>Parana</em>. After two days in the relatively flat and densely populated coastal region around <em>Santos</em>, we made our way to the mountains north of Curitiba. In total, we covered a distance of <span class="math inline">515 <em>k</em><em>m</em></span> and <span class="math inline">6200 <em>m</em></span> of elevation.</p>
+</div>
+</div>
+<div id="float">
+<div id="de">
+<h2 id="was-wir-diese-woche-gelernt-haben">Was wir diese Woche gelernt haben:</h2>
+<ul>
+<li>Mit den brasilianischen Mosquitos ist nicht zu spassen. AntiBrumm kann man nicht genug dabei haben.</li>
+<li>Hinter einem <em>X-Salada</em> auf der Speisekarte verbirgt sich kein Salat, sondern ein Hamburger mit einem Salatblatt. _ Bevor man denkt <em>Puh, endlich oben angekommen</em>, sollte man lieber ersteinmal die naechste Kurve abwarten. _ Alle Menschen die wir bisher getroffen haben waren super gastfreundlich, hilfsbereit und gespraechig. Ausser ein paar grueffelige Maenner in den Bars, die es hier an jeder Ecke gibt.</li>
+<li>Alle erklaeren uns wie gefaehrlich Brasilien eigentlich ist. Wer soll uns jetzt noch ausrauben?</li>
+</ul>
+</div>
+<div id="en">
+<h2 id="what-weve-learned-this-week">What we’ve learned this week:</h2>
+<ul>
+<li>Mosquitos in Brazil are different from European ones. Not in a good way.</li>
+<li><em>X-Salada</em> does <strong>not</strong> mean salad. It means Hamburger (with a leaf of lettuce).</li>
+<li>Ascends in Brazil don’t end. Never.</li>
+<li>People are welcoming, helpful and communicative. Except for some drunk men in bars.</li>
+<li>People are so busy telling you how dangerous Brazil is, they wouldn’t even have time to rob you.</li>
+</ul>
+</div>
+</div>
+<div id="float">
+<div id="de">
+<h2 id="tag-1">Tag 1</h2>
+<p>Nachdem wir um 4:45 morgens in <em>Sao Paolo</em> gelandet sind, haben wir uns erstmal gewundert, dass es schon hell war, als wir den Flughafen um ca. 5:30 verlassen haben. Dass die Sonne in den niedrigen Breitengraden Suedbrasiliens so frueh aufgeht bedeutet natuerlich auch, dass es viel schneller dunkel wird (ca. um 18:00). Um erstmal aus der Grossstadt <em>Sao Paolo</em>, in der es so gut wie keine Wege fuer Fahrraeder gibt, herauszukommen, haben wir dann den naechsten Bus in die Kuestenstadt <em>Santos</em> genommen, wo wir unsere Fahrrader am Busbahnhof aufgebaut haben, um dann direkt gen Sueden loszufahren. Es gab einen sehr schoenen Fahrradweg, der direkt am Strand entlang fuehrte und auf dem wir fast den ganzen Weg bis nach <em>Itanhaem</em> fahren konnten. Als es dann langsam dunkel wurde und anfing zu regnen haben wir uns entschieden die erste Nacht in Brasilien in einer kleinen, gemuetlichen <em>Pousada</em> in <em>Itanhaem</em> zu verbringen.</p>
+</div>
+<div id="en">
+<h2 id="day-1">Day 1</h2>
+<p>After landing in Sao Paulo at 4:45 am, the first suprise was to see sunlight as we left the airport at about 5:30 am. The early sunrise together with the low latitude means that the sun also sets early at about 6 pm. In order to get out of the relatively big city of Sao Paulo, we took the first bus we could find that took us from the international airport to the coastal city of <em>Santos</em>. In <em>Santos</em> we assembled our bikes at the <em>Rodovaria</em> and made our way south out of the city. There was a nice cycle path along the beach that took us almost all the way to <em>Itanhaem</em>. When the sun set it had started raining and with no end of the urban region in sight we checked into the first <em>Pousada</em> we found and spent a comfortable first night in Brazil.</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01132.JPG" title="-23.935309,-46.335174" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01141.JPG" title="-24.062051,-46.5534026" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01145.JPG" title="-24.2345307,-46.88729" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-2">Day 2</h2>
+<p>The second day we decided to make our first detour to the <em>Praia do Una</em>, a remote beach located in a nature reserve south of <em>Peruibe</em>. The road leading to the beach was unpaved, muddy and hilly, which is why it took us the whole day to make it to the beach and half the way back to the <em>Ecopousada</em>, where we spent the night (and had great dinner and <em>Cafe da Manha</em>).</p>
+</div>
+<div id="de">
+<h2 id="tag-2">Tag 2</h2>
+<p>Am zweiten Tag haben wir uns zu einem kleinen Umweg zum <em>Praia do Una</em>, einem einsam gelegenen Strand in einem Naturschutzgebiet suedlich von <em>Peruibe</em>, entschieden. Der Weg zum Strand war ein unbefestigter, schlammiger Weg mit vielen Anstiegen. Deshalb dauerte es den ganzen Tag, zum Strand und nach einer kleinen Badepause den halben Weg wieder zurueck zu der <em>Ecopousada</em>, wo wir uebernachtet haben (und ein fantastisches Abendessen serviert bekommen haben), zufahren.</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01176.JPG" title="-24.4065567,-47.0786" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01195.JPG" title="-24.4410405,-47.0660294" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01198.JPG" title="-24.4146497,-47.0641303" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01231.JPG" title="-24.4136497,-47.0641303" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-3">Day 3</h2>
+<p>On the third day we made our way back to <em>Peruibe</em>. The rain from the previous night did not exactly improve the conditions of the road. From <em>Peruibe</em> we made our way inlands and spent the first night in our tent between <em>Juquia</em> and <em>Sete Barras</em>. The only road between <em>Miracatu</em> and <em>Juquia</em> was the <em>BR 116</em> highway. With the help of a local we found ourselves a bus which would fit our bycicles and drove the way to <em>Juquia</em> in order to avoid cycling on the shoulder of the highway.</p>
+</div>
+<div id="de">
+<h2 id="tag-3">Tag 3</h2>
+<p>Am dritten Tag sind wir zurueck nach <em>Peruibe</em> gefahren, was nicht unbedingt leichter war als der Hinweg, da der Regen in der vorangehenden Nacht die Strasse noch schlammiger gemacht hat. Von <em>Peruibe</em> sind wir dann in Richtung Inland gefahren und haben unsere erste Nacht im Zelt irgendwo zwischen <em>Juquia</em> und <em>Sete Barras</em> verbracht. Da die einzige Strasse die <em>Miracatu</em> mit <em>Juiquia</em> verbindet die Autobahn <em>BR 116</em> war, haben wir mit der Hilfe eines freundlichen Einheimischens einen Bus gefunden, der uns nach <em>Juquia</em> gebracht hat und in dem wir unsere Fahrraeder ohne Probleme mitnehmen konnten.</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01235.JPG" title="fig:-24.3724916,-47.0647005" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-4">Day 4</h2>
+<p>The road from <em>Sete Barras</em> to <em>Eldorado</em> took as along the <em>Rio Ribeira de Iguape</em> through banana fields. From <em>Eldorado</em> we continued along the <em>Rio Ribeira de Iguape</em> until we came across a small campsite with a natural swimming pool in the form of a waterfall.</p>
+</div>
+<div id="de">
+<h2 id="tag-4">Tag 4</h2>
+<p>Auf der Strasse von <em>Sete Barras</em> nach <em>El Dorado</em> sind wir entlang des <em>Rio Ribeira de Iguape</em> und durch unzaehlige Bananenplantagen gefahren. Nach einer laengeren Mittagspause in <em>El Dorado</em> sind wir dem <em>Rio Ribeira de Iguape</em> weiter gefolgt, bis wir zu einem kleinen, gemuetlichen Campingplatz gekommen sind, der nicht nur einen perfekten Platz fuer unser Zelt, sondern auch ein privates Naturschwimmbecken in Form eines Wasserfalls fuer uns bereit hielt. Traumhaft!</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01251.JPG" title="-24.410436,-47.9641376" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01255.JPG" title="-24.5041081,-48.1055341" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01280.JPG" title="-24.5936464,-48.2111207" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01284.JPG" title="-24.5938464,-48.2111207" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-5">Day 5</h2>
+<p>On day 5, we continued along the <em>SP-165</em> through <em>Iporanga</em> to <em>Apiai</em>. The road took us through the <em>Parque Estadual Turístico do Alto Ribeira</em>. From <em>Iporanga</em>, a large part of the road was unpaved and effectively ascended all the way up to Apiai. The long climb together with the heat (<span class="math inline">&gt;40<sup>∘</sup> <em>C</em><em>e</em><em>l</em><em>c</em><em>i</em><em>u</em><em>s</em></span>) made this the <strong>so-far</strong> most exhausting day of our trip. Arriving in Apiai the sun had already set so we were happy to find a cheap hotel room and a pizza <em>Gigante</em>.</p>
+</div>
+<div id="de">
+<h2 id="tag-5">Tag 5</h2>
+<p>An Tag 5 sind wir der Strasse <em>SP-165</em> weiterhin gefolgt und durch <em>Iporanga</em> und den <em>Parque Estadual Turistico do Alto Ribeira</em> bis nach <em>Apiai</em> gefahren. Von <em>Iporanga</em> an war die Strasse groesstenteils unbefestigt und ging mehrere Stunden bergauf. Die steilen Berge zusammen mit der Hitze (<span class="math inline">&gt;40<sup>∘</sup> <em>C</em><em>e</em><em>l</em><em>c</em><em>i</em><em>u</em><em>s</em></span>) haben diesen Tag zu dem bisher mit Abstand anstrengendstem Tag gemacht. Wir waren super froh als wir dann endlich in <em>Apiai</em> angekommen sind und uns mit einem billigen, aber schoenem Hotelzimmer und einer Pizza <em>Gigante</em> belohnt haben.</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01316.JPG" title="-24.5696471,-48.5019001" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01318.JPG" title="-24.5851512,-48.5975033" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01337.JPG" title="-24.5357761,-48.787452" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-6">Day 6</h2>
+<p>From Apiai, we descended down to <em>Ribeira</em> / <em>Adrianopolis</em>, where we crossed the borders to the state of <em>Parana</em>. From Apiai on the influence of industrial forestry on the environment was clearly visible with large deforested areas and forest plantations. From Ribeira, another endless climb led us up to shortly before <em>Tunas de Parana</em>, where we camped in one of the pine plantations.</p>
+</div>
+<div id="de">
+<h2 id="tag-6">Tag 6</h2>
+<p>Von <em>Apiai</em> ging es ersteinmal bergab in die Kleinstaedte <em>Ribeira</em> und <em>Adrianopolis</em>, wo wir die Grenze zum Bundesstaat <em>Parana</em> ueberschritten haben. In dieser Region konnte man deutlich den Einfluss der Forstwirtschaft in Form von grossflaechigen Rodungen auf die umliegenden Waelder sehen. Hinter <em>Ribeira</em> ging es dann nochmal einen unendlich langen Berg hoch bis kurz vor <em>Tunas de Parana</em> , wo wir schliesslich in einem der kuenstlichen Pinienwaelder unser Zelt aufbauten.</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01349.JPG" title="fig:-24.5142584,-48.8439112" />
+</div>
+<div id="float">
+<div id="en">
+<h2 id="day-7">Day 7</h2>
+<p>On day 7, after making our way <span class="math inline">36 <em>k</em><em>m</em></span> along the unpaved road from <em>Tunas do Parana</em> to <em>Cerro Azul</em>, we had a relaxed afternoon with ice cream and pizza.</p>
+</div>
+<div id="de">
+<h2 id="tag-7">Tag 7</h2>
+<p>Am siebten Tag sind wir noch <span class="math inline">36 <em>k</em><em>m</em></span> auf einem unbefestigten Weg von <em>Tunas do Parana</em> nach <em>Cerro Azul</em> gefahren, wo wir einen sehr entspannten Nachmittag mit Sonne, Eis und Pizza verbrachten!</p>
+</div>
+</div>
+<div id="image">
+<img src="../images/DSC01367.JPG" title="-24.9174553,-49.1463853" />
+</div>
+<p> </p>
+<div id="image">
+<img src="../images/DSC01375.JPG" title="-24.8626956,-49.2166665" />
+</div>
+
+        </div>
+        <div id="footer">
+            Site proudly generated by
+            <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </div>
+        <script src="../js/nav.js"></script>
+    </body>
+</html>
+
+
