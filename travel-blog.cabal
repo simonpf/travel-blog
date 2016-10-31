@@ -9,5 +9,11 @@ executable site
                   , hakyll == 4.8.*
                   , hjsmin == 0.2.*
                   , bytestring == 0.10.*
+                  , pandoc-types
+                  , pandoc
+                  , hsexif
+                  , containers
+                  , filepath
+                  , process
   ghc-options:      -threaded
   default-language: Haskell2010

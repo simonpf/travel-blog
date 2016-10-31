@@ -1,24 +1,26 @@
 body {
     color: black;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: justify;
+    text-justify: inter-word;
     margin: 0px auto 0px auto;
     width: 100%
 }
 
 #mapid {
-    height: 50vh;
+    height: 65vh;
     width: 100%;
     left: 0;
 }
 
 #content {
-    width: 50%;
+    width: 80%;
     margin: auto;
 }
 
 div#header {
-    padding: 12px 0px 12px 0px;
-    width: 50%;
+    width: 80%;
     text-align: center;
     margin: auto;
 }
@@ -33,52 +35,149 @@ div#logo a {
 }
 
 div #navigation {
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Cinzel Decorative', cursive;
     background: #ffffff;
+    height: 100%;
 }
 
-div #header{
-    color: #bbb;
-    background: #ffffff;
-    height: 3em;
+div #compass_container {
+    width:  100%;
+    height: 14vh;
+}
+
+div #top_left{
+    width:  40%;
+    height: 50%;
+    float: left;
+    text-align: center;
+}
+div #top_right{
+    width:  40%;
+    height: 50%;
+    float: right;
+    text-align: center;
+}
+
+div #bottom_left{
+    border-top: 1px solid black;
+    width:  40%;
+    height: 50%;
+    float: left;
+}
+
+div #bottom_right {
+    border-top: 1px solid black;
+    width:  40%;
+    height: 50%;
+    float: right;
+}
+
+div #en {
+    float: left;
+    width: 49%;
+    padding-bottom: 2em;
+}
+
+div #float {
+    width: 100%;
+    overflow: auto;
+}
+
+div #de {
+    float: right;
+    width: 49.5%;
+}
+
+div #de > * {
+    font-style:   italic;
+    padding-left: 10%;
+}
+
+div #en > * {
+    padding-left: 10%;
+}
+
+span #h_en {
+    font-weight: bold;
+}
+
+span #h_de {
+    font-weight: regular;
+}
+
+div #compass {
+    background-image: url("/images/world.png");
+    background-size: 10vw;
+    background-position: center;
+    background-repeat: no-repeat;
+    width:  100%;
+    height: 100%;
+    position: fixed:
+    margin-left: 45vh;
+}
+
+div #image {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+img {
+    max-width: 100vw;
+    max-height: 80vh;
+    flex: none;
 }
 
 .navbar-fixed {
   position: fixed;
   text-align: center;
-  height: 3 em;
   width: 100%;
-  top: -3em;
+  left: 10%;
+  top: 0%;
 }
 
-div#header #navigation a {
+div#header a {
     color: black;
-    font-size: 18px;
+    font-size: 35px;
     font-weight: bold;
-    margin-left: 12px;
+    font-family: 'Amatica SC', cursive;
+    margin-left: 40px;
     text-decoration: none;
-    text-transform: uppercase;
 }
+
+a {
+    color: #555;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:visited {}
+a:hover {}
+a:active{}
 
 div#footer {
-    border-top: solid 2px black;
+    border-top: solid 1px black;
     color: #555;
     font-size: 12px;
     margin-top: 30px;
     padding: 12px 0px 12px 0px;
-    text-align: right;
+    text-align: center;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 35px;
+    font-family: 'Amatica SC', cursive;
+    text-align: center;
 }
 
 h2 {
-    font-size: 20px;
+    font-family: 'Amatica SC', cursive;
+    font-size: 30px;
 }
 
 div.info {
     color: #555;
     font-size: 14px;
     font-style: italic;
+    text-align: center;
 }
